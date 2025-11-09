@@ -23,7 +23,8 @@ jobs:
 
     - name: Build the Docker image
       # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-      run: docker build -t php-84-apache:latest .
+      # run: docker build -t php-84-apache:latest .
+      uses: docker/build-push-action@v6
       with:
         push: true
         tags: zuraj/php-84-apache:latest
