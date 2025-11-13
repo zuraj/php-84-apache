@@ -1,5 +1,12 @@
 FROM php:8.4-apache
 
+# install system packages for zip extension
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    zip \
+ && docker-php-ext-install zip \
+ && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # activate Apache mod_rewrite
 RUN a2enmod rewrite
 
